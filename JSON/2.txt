@@ -1,0 +1,85 @@
+1.
+XPATH:
+/nutrition/food[contains(name, "Chicken")]/calories/@total
+RESULT:
+410
+
+2.
+XPATH: 
+/nutrition/food[vitamins[c > 0]]/name/text()
+
+RESULT:
+Beef Frankfurter, Quarter Pound,
+Chicken Pot Pie,
+Cole Slaw,
+Potato Chips
+
+
+3. 
+XPATH:
+/nutrition/food[vitamins[a > 0][c > 0]]/name/text()
+
+RESULT:
+Chicken Pot Pie
+Cole Slaw
+
+4.
+XPATH:
+/nutrition/food[saturated-fat div total-fat > 0.5]/name/text()
+
+RESULT:
+Truffles, Dark Chocolate
+
+5.
+XQUERY:
+declare option saxon:output "omit-xml-declaration=yes";
+let $x := max(/nutrition/food/cholesterol/text())
+for $r in /nutrition/food[cholesterol[text() = $x]]/name/text()
+return $r
+
+RESULT:
+Eggs
+
+6.
+XQUERY:
+<result>
+    {
+    for $x in /nutrition/food[minerals[ca > 0]]/name
+    return 
+        <food>
+        {(
+            $x,
+            for $i in /nutrition/food[name = $x]/total-fat
+            return $i
+        )}
+        </food>
+    }
+</result>
+
+RESULT:
+<result>
+   <food>
+      <name>Bagels, New York Style</name>
+      <total-fat>4</total-fat>
+   </food>
+   <food>
+      <name>Beef Frankfurter, Quarter Pound</name>
+      <total-fat>32</total-fat>
+   </food>
+   <food>
+      <name>Chicken Pot Pie</name>
+      <total-fat>22</total-fat>
+   </food>
+   <food>
+      <name>Cole Slaw</name>
+      <total-fat>0</total-fat>
+   </food>
+   <food>
+      <name>Eggs</name>
+      <total-fat>4.5</total-fat>
+   </food>
+   <food>
+      <name>Hazelnut Spread</name>
+      <total-fat>10</total-fat>
+   </food>
+</result>

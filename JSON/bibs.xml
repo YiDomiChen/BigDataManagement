@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bib>
+<cd><title>Legend</title></cd>
+<book price="40">
+	<publisher>Addison-Wesley</publisher>
+        <author>Serge Abiteboul</author>
+        <author><first-name>Rick</first-name><last-name>Hull</last-name></author>
+        <author age="20">Victor Vianu</author>
+        <title>Foundations of Databases</title>
+        <year>1995</year>
+	<price>38.8</price>
+</book>
+<book price="50">
+        <publisher>Freeman</publisher>
+        <author>Jeffrey D. Ullman</author>
+        <title>Principles of Database and Knowledge Base Systems</title>
+        <year>1998</year>
+</book>
+<book price="20">
+	<publisher>Addison-Wesley</publisher>
+	<title>Advances in Databases</title>
+	<author>Serge Abiteboul</author>
+</book>
+<paper> 
+	<title>XQuery optimization</title>
+</paper>
+</bib>
